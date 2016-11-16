@@ -1,0 +1,27 @@
+
+<div class="main">
+  <div class="container">
+    <ul class="breadcrumb">
+       <li><a href="index.html">Home</a></li>
+       <li><a href="">Companies</a></li>
+    
+    </ul>
+    <!-- BEGIN SIDEBAR & CONTENT -->
+    <div class="row margin-bottom-40">
+      <!-- BEGIN SIDEBAR -->
+      <sd-sidebar [menu]=menu></sd-sidebar>
+      <!-- END SIDEBAR -->
+
+      <!-- BEGIN CONTENT -->
+      <div class="col-md-9 col-sm-7">
+        <!--h1>My Account Page</h1-->
+        <div class="content-page">
+          <!--h3>My Account</h3-->
+          <router-outlet></router-outlet>
+        </div>
+      </div>
+      <!-- END CONTENT -->
+    </div>
+    <!-- END SIDEBAR & CONTENT -->
+  </div>
+</div>

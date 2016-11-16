@@ -1,0 +1,12 @@
+  <!-- BEGIN SIDEBAR -->
+  <div class="sidebar col-md-3 col-sm-3">
+     <div *ngFor="let section of menu">
+        <div class="sidebar-section">{{section.name}}</div>
+        <ul class="margin-bottom-25 sidebar-menu">
+          <li *ngFor="let item of section.items">
+              <a [routerLink]="['./']" [routerLinkActive]="['router-link-active']" [routerLinkActiveOptions]="{exact:true}">{{item.name}}</a>
+          </li>
+        </ul>
+     </div>
+  </div>
+  <!-- END SIDEBAR -->
