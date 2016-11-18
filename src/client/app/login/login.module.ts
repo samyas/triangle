@@ -13,7 +13,7 @@ import { loginRouting } from './login.routes';
   declarations: [LoginComponent],
   providers: [NameListService, AuthService,  {
       provide: 'webApiBaseUrl',
-       useValue: 'http://localhost:8080/' 
+       useValue: 'http://localhost:8080/'
   }]
 })
 export class LoginModule { }

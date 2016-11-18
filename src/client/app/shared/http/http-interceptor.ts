@@ -1,7 +1,3 @@
-/**
- * Reference:
- * https://blog.tomasandtomas.com/angular-2-http-interceptors-7e2d74b7f14e#.ph17wjbiu
- */
 import { Injectable } from '@angular/core';
 import {
     Http,
@@ -18,7 +14,7 @@ import 'rxjs/Rx';
 @Injectable()
 export class HttpInterceptor extends Http {
     constructor(backend: ConnectionBackend,
-                defaultOptions: RequestOptions) {
+        defaultOptions: RequestOptions) {
         super(backend, defaultOptions);
     }
 
@@ -65,23 +61,19 @@ export class HttpInterceptor extends Http {
      */
     post(url: string, body: any, options?: RequestOptionsArgs): Observable<any> {
         this.requestInterceptor();
-      /*  return super.post(url, body, this.requestOptions(options))
-            .catch(this.onCatch)
-            .do((res: Response) => {
-                this.onSubscribeSuccess(res);
-            }, (error: any) => {
-                this.onSubscribeError(error);
-            })
-            .finally(() => {
-                this.onFinally();
-            });*/
-             return super.post(url,body, options).catch((res: Response) => this.handleResponseError(res));
+        /*  return super.post(url, body, this.requestOptions(options))
+              .catch(this.onCatch)
+              .do((res: Response) => {
+                  this.onSubscribeSuccess(res);
+              }, (error: any) => {
+                  this.onSubscribeError(error);
+              })
+              .finally(() => {
+                  this.onFinally();
+              });*/
+        return super.post(url, body, options).catch((res: Response) => this.handleResponseError(res));
     }
 
-    private handleResponseError(res:Response) {
-   
-        return Observable.throw(res);
-  }
     /**
      * Performs a request with `put` http method.
      * @param url
@@ -130,13 +122,17 @@ export class HttpInterceptor extends Http {
      * @returns {RequestOptionsArgs}
      */
     private requestOptions(options?: RequestOptionsArgs): RequestOptionsArgs {
-        if (options == null) {
+        if (options === null) {
             options = new RequestOptions();
         }
-        if (options.headers == null) {
+        if (options.headers === null) {
             options.headers = new Headers();
         }
         return options;
+    }
+
+    private handleResponseError(res: Response) {
+        return Observable.throw(res);
     }
 
     /**
@@ -169,15 +165,13 @@ export class HttpInterceptor extends Http {
      * onSubscribeSuccess
      * @param res
      */
-    private onSubscribeSuccess(res: Response): void {
-    }
+    private onSubscribeSuccess(res: Response): void {}
 
     /**
      * onSubscribeError
      * @param error
      */
-    private onSubscribeError(error: any): void {
-    }
+    private onSubscribeError(error: any): void {}
 
     /**
      * onFinally

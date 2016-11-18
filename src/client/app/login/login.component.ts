@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Router,
-         NavigationExtras } from '@angular/router';
+import { Router } from '@angular/router';
 import { AuthService } from '../shared/index';
 
 @Component({
@@ -16,13 +15,12 @@ export class LoginComponent implements OnInit {
 
 
      login(username: string, password: string) {
- 
+
         this.authService.login(username, password)
             .subscribe(result => {
                 if (result === true) {
-                  console.log("switch home");
+                  console.log('switch home');
                   this.router.navigate(['/companies']);
-                  
                 } else {
                     console.log('Username or password is incorrect');
                 }
@@ -33,5 +31,5 @@ export class LoginComponent implements OnInit {
     event.preventDefault();
     this.router.navigate(['signup']);
   }
-    
+
 }

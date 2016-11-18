@@ -16,26 +16,45 @@ import { Company } from '../companies.model';
 
 export class CompanyCreateComponent implements OnInit {
 
-   public company: Company = new Company('','', '', '', '', '', '','', '');
-   public errorMessage: string;
-   
-   
-    businessTypes = ['Really Smart', 'Super Flexible', 'Weather Changer'];
+  public company: Company = new Company('', '', '', '', '', '', '', '', '');
+  public errorMessage: string;
 
-   companyForm: FormGroup;
+  formErrors: any = {
+    'name': '',
+    'email': '',
+    'vat': '',
+  };
+  validationMessages: any = {
+    'name': {
+      'required': 'Name is required.',
+      'minlength': 'Name must be at least 4 characters long.',
+      'maxlength': 'Name cannot be more than 24 characters long.'
+    },
+    'email': {
+      'required': 'Email is required.',
+      'invalidEmailAddress': 'Email is not valid'
+    },
+    'vat': {
+      'required': 'Vat is required.'
+    }
+  };
+
+  businessTypes = ['Really Smart', 'Super Flexible', 'Weather Changer'];
+
+  companyForm: FormGroup;
   /**
    * Creates an instance of the CompanyListComponent with the injected
    * CompaniesService.
    *
    * @param {CompaniesService} CompaniesService - The injected CompaniesService.
    */
-  constructor(public companyService: CompaniesService, private fb: FormBuilder) {}
+  constructor(public companyService: CompaniesService, private fb: FormBuilder) { }
 
   /**
    * OnInit
    */
   ngOnInit() {
-     this.buildForm();
+    this.buildForm();
   }
 
   /**
@@ -45,27 +64,26 @@ export class CompanyCreateComponent implements OnInit {
   onSubmit() {
     this.company = this.companyForm.value;
     this.companyService.createCompany(this.company)
-		     .subscribe(
-		       id => this.company.id = id,
-		       error =>  this.errorMessage = <any>error
-		       );
-           let field = 'name';
-            const messages = this.validationMessages[field];
-            this.formErrors[field] += messages['maxlength'] + ' ';
-       
-         
+      .subscribe(
+      id => this.company.id = id,
+      error => this.errorMessage = <any>error
+      );
+    let field = 'name';
+    const messages = this.validationMessages[field];
+    this.formErrors[field] += messages['maxlength'] + ' ';
+
   }
 
-   buildForm(): void {
+  buildForm(): void {
     this.companyForm = this.fb.group({
       'name': [this.company.name, [
-          Validators.required,
-          Validators.minLength(4),
-          Validators.maxLength(24)
-        ]
+        Validators.required,
+        Validators.minLength(4),
+        Validators.maxLength(24)
+      ]
       ],
-      'email':    [this.company.email, [Validators.required, CustomValidators.emailValidator]],
-       'vat':    [this.company.vat, Validators.required]
+      'email': [this.company.email, [Validators.required, CustomValidators.emailValidator]],
+      'vat': [this.company.vat, Validators.required]
     });
     this.companyForm.valueChanges
       .subscribe(data => this.onValueChanged(data));
@@ -86,23 +104,4 @@ export class CompanyCreateComponent implements OnInit {
       }
     }
   }
-  formErrors : any = {
-    'name': '',
-    'email': '',
-    'vat': '',
-  };
-  validationMessages : any = {
-    'name': {
-      'required':      'Name is required.',
-      'minlength':     'Name must be at least 4 characters long.',
-      'maxlength':     'Name cannot be more than 24 characters long.'
-    },
-    'email': {
-      'required': 'Email is required.',
-      'invalidEmailAddress': 'Email is not valid'
-    },
-    'vat': {
-      'required': 'Vat is required.'
-    }
-  };
 }

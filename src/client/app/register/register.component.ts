@@ -12,11 +12,11 @@ export class RegisterComponent implements OnInit {
 
     ngOnInit() { this.getUsers();}
 
-    getUsers(){
+    getUsers() {
         this.registerService.getUsers().subscribe(
                                 users => {
-                                  console.log("success!!");
-                                }, 
+                                  console.log('success!!');
+                                },
                                 err => {
                                     // Log errors if any
                                     console.log(err);

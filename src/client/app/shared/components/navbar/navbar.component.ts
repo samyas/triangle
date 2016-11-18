@@ -27,8 +27,6 @@ export class NavbarComponent  implements OnInit {
   /**
    * Get the names OnInit
    */
-  ngOnInit() {
-   
-  }
+  ngOnInit() {}
 
 }

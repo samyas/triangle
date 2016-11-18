@@ -1,6 +1,6 @@
 export class Company {
     constructor(
-        public id: string, 
+        public id: string,
         public name: string,
         public address: string,
         public domain: string,
@@ -9,5 +9,5 @@ export class Company {
         public businessType: string,
         public email: string,
         public vat: string
-        ){}
+        ) {}
 }

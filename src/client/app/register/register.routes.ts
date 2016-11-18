@@ -1,7 +1,7 @@
-import { ModuleWithProviders }   from '@angular/core';
-import { Route, RouterModule }  from '@angular/router';
+import { ModuleWithProviders } from '@angular/core';
+import { Route, RouterModule } from '@angular/router';
 
-import { RegisterComponent} from './index';
+import { RegisterComponent } from './index';
 
 
 export const RegisterRoutes: Route[] = [

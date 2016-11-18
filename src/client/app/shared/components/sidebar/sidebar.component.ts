@@ -27,8 +27,6 @@ export class SidebarComponent  implements OnInit {
   /**
    * Get the names OnInit
    */
-  ngOnInit() {
-   
-  }
+  ngOnInit() { }
 
 }

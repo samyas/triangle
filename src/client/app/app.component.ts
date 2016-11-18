@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { Config, NavBarItem} from './shared/index';
-import { MENU} from './shared/menu/menu.definition';
+import { Config, NavBarItem } from './shared/index';
+import { MENU } from './shared/menu/menu.definition';
 
 /**
  * This class represents the main application component. Within the @Routes annotation is the configuration of the

@@ -4,7 +4,6 @@ import {
   ActivatedRouteSnapshot,
   RouterStateSnapshot,
   CanActivateChild,
-  NavigationExtras,
   CanLoad, Route
 }                           from '@angular/router';
 import { AuthService }      from './auth.service';
@@ -30,17 +29,13 @@ export class AuthGuard implements CanActivate, CanActivateChild, CanLoad {
   }
 
   checkLogin(url: string): boolean {
-      console.log("check login:"+ this.authService.isLoggedIn)
+      console.log('check login:'+ this.authService.isLoggedIn)
     if (this.authService.isLoggedIn) { return true; }
 
     // Store the attempted URL for redirecting
     this.authService.redirectUrl = url;
-
-   
-
     // Set our navigation extras object
     // that contains our global query params and fragment
-    
 
     // Navigate to the login page with extras
     this.router.navigate(['/login']);
@@ -48,9 +43,3 @@ export class AuthGuard implements CanActivate, CanActivateChild, CanLoad {
   }
 }
 
-
-/*
-Copyright 2016 Google Inc. All Rights Reserved.
-Use of this source code is governed by an MIT-style license that
-can be found in the LICENSE file at http://angular.io/license
-*/
