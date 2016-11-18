@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CustomValidators } from '../../shared/index';
 import { CompaniesService } from '../companies.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Company } from '../companies.model';
@@ -48,6 +49,11 @@ export class CompanyCreateComponent implements OnInit {
 		       id => this.company.id = id,
 		       error =>  this.errorMessage = <any>error
 		       );
+           let field = 'name';
+            const messages = this.validationMessages[field];
+            this.formErrors[field] += messages['maxlength'] + ' ';
+       
+         
   }
 
    buildForm(): void {
@@ -58,7 +64,7 @@ export class CompanyCreateComponent implements OnInit {
           Validators.maxLength(24)
         ]
       ],
-      'email':    [this.company.email, Validators.required],
+      'email':    [this.company.email, [Validators.required, CustomValidators.emailValidator]],
        'vat':    [this.company.vat, Validators.required]
     });
     this.companyForm.valueChanges
@@ -72,7 +78,7 @@ export class CompanyCreateComponent implements OnInit {
       // clear previous error message (if any)
       this.formErrors[field] = '';
       const control = form.get(field);
-      if (control && control.dirty && !control.valid) {
+      if (control && (control.dirty || control.touched) && !control.valid) {
         const messages = this.validationMessages[field];
         for (const key in control.errors) {
           this.formErrors[field] += messages[key] + ' ';
@@ -92,7 +98,8 @@ export class CompanyCreateComponent implements OnInit {
       'maxlength':     'Name cannot be more than 24 characters long.'
     },
     'email': {
-      'required': 'Email is required.'
+      'required': 'Email is required.',
+      'invalidEmailAddress': 'Email is not valid'
     },
     'vat': {
       'required': 'Vat is required.'

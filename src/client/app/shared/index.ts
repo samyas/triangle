@@ -7,4 +7,5 @@ export * from './http/index';
 export * from './components/sidebar/index';
 export * from './components/navbar/index';
 export * from './components/toolbar/index';
+export * from './components/forms/index';
 export * from './config/env.config';
