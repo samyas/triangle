@@ -1,11 +1,17 @@
 import { Routes } from '@angular/router';
 
-import { AboutRoutes } from './about/index';
+
 import { HomeRoutes } from './home/index';
+
+
+ const aboutRoutes: Routes = [{
+  path : 'about',
+  loadChildren : 'app/about/about.module#AboutModule'
+}];
 
 export const routes: Routes = [
   ...HomeRoutes,
-  ...AboutRoutes,
+  ...aboutRoutes,
 ];
 
 

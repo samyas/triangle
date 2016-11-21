@@ -7,7 +7,6 @@ import { AppComponent } from './app.component';
 import { routes } from './app.routes';
 import { HttpInterceptor, HttpHeader } from './shared/index';
 
-import { AboutModule } from './about/about.module';
 import { HomeModule } from './home/home.module';
 import { CompaniesModule } from './companies/companies.module';
 import { LoginModule } from './login/login.module';
@@ -20,7 +19,7 @@ export function httpFactory(backend: XHRBackend, defaultOptions: RequestOptions)
 }
 
 @NgModule({
-  imports: [BrowserModule, HttpModule, RouterModule.forRoot(routes), AboutModule, HomeModule, 
+  imports: [BrowserModule, HttpModule, RouterModule.forRoot(routes), HomeModule,
             CompaniesModule, LoginModule, RegisterModule, SharedModule.forRoot()],
   declarations: [AppComponent],
   providers: [

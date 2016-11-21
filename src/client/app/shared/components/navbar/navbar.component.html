@@ -16,7 +16,7 @@
       <ul>
 
         <li *ngFor="let item of menu" [class.dropdown]="item.children">
-             <a [routerLink]="['/']" [routerLinkActive]="['router-link-active']" [routerLinkActiveOptions]="{exact:true}" class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="javascript:;">
+             <a routerLink={{item.path}} [routerLinkActive]="['router-link-active']" [routerLinkActiveOptions]="{exact:true}" class="dropdown-toggle" data-toggle="dropdown">
                   {{item.name}}
             </a>
 

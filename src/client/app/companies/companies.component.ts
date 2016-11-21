@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { NameListService } from '../shared/index';
 import { SideBarSection } from '../shared/components/sidebar/index';
 import { SIDEBAR } from './sidebar.definition';
 
@@ -22,11 +21,8 @@ export class CompaniesComponent implements OnInit {
 
   /**
    * Creates an instance of the CompaniesComponent with the injected
-   * NameListService.
-   *
-   * @param {NameListService} nameListService - The injected NameListService.
    */
-  constructor(public nameListService: NameListService) {}
+  constructor() {}
 
   /**
    * Get the names OnInit
@@ -38,13 +34,7 @@ export class CompaniesComponent implements OnInit {
   /**
    * Handle the nameListService observable
    */
-  getNames() {
-    this.nameListService.get()
-		     .subscribe(
-		       names => this.names = names,
-		       error =>  this.errorMessage = <any>error
-		       );
-  }
+  getNames() {}
 
   /**
    * Pushes a new name onto the names array

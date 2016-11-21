@@ -9,7 +9,7 @@ export const CompaniesRoutes: Route[] = [
   {
     path: 'companies',
     component: CompaniesComponent,
-  //  canActivate: [AuthGuard],
+    canActivate: [AuthGuard],
     children: [
       { path: '',  component: CompanyListComponent },
       { path: 'view', component: CompanyViewComponent },

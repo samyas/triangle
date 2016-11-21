@@ -20,28 +20,14 @@ export class HomeComponent implements OnInit {
   /**
    * Creates an instance of the HomeComponent with the injected
    * NameListService.
-   *
-   * @param {NameListService} nameListService - The injected NameListService.
    */
-  constructor(public nameListService: NameListService) {}
+  constructor() {}
 
   /**
    * Get the names OnInit
    */
-  ngOnInit() {
-    this.getNames();
-  }
+  ngOnInit() {}
 
-  /**
-   * Handle the nameListService observable
-   */
-  getNames() {
-    this.nameListService.get()
-		     .subscribe(
-		       names => this.names = names,
-		       error =>  this.errorMessage = <any>error
-		       );
-  }
 
   /**
    * Pushes a new name onto the names array

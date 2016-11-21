@@ -36,7 +36,7 @@ export class HttpInterceptor extends Http {
      */
     get(url: string, options?: RequestOptionsArgs): Observable<any> {
         this.requestInterceptor();
-        return super.get(url, this.requestOptions(options))
+        return super.get(url, options)
             .catch(this.onCatch)
             .do((res: Response) => {
                 this.onSubscribeSuccess(res);
@@ -83,7 +83,7 @@ export class HttpInterceptor extends Http {
      */
     put(url: string, body: string, options?: RequestOptionsArgs): Observable<any> {
         this.requestInterceptor();
-        return super.put(url, body, this.requestOptions(options))
+        return super.put(url, body, options)
             .catch(this.onCatch)
             .do((res: Response) => {
                 this.onSubscribeSuccess(res);
@@ -116,20 +116,7 @@ export class HttpInterceptor extends Http {
     }
 
 
-    /**
-     * Request options.
-     * @param options
-     * @returns {RequestOptionsArgs}
-     */
-    private requestOptions(options?: RequestOptionsArgs): RequestOptionsArgs {
-        if (options === null) {
-            options = new RequestOptions();
-        }
-        if (options.headers === null) {
-            options.headers = new Headers();
-        }
-        return options;
-    }
+
 
     private handleResponseError(res: Response) {
         return Observable.throw(res);
