@@ -12,7 +12,7 @@ export const CompaniesRoutes: Route[] = [
     canActivate: [AuthGuard],
     children: [
       { path: '',  component: CompanyListComponent },
-      { path: 'view', component: CompanyViewComponent },
+      { path: 'view/:id', component: CompanyViewComponent },
       { path: 'create', component: CompanyCreateComponent }
     ]
   }

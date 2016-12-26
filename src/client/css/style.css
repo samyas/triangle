@@ -470,13 +470,13 @@ body.page-header-fixed {
   display: none;
   margin: 25px 0 0 30px;
   position: relative;
-  background: #fff url(../img/icons/toggler.png) no-repeat 6px 8px;
+  background: #fff url(../assets/frontend/layout/img/icons/toggler.png) no-repeat 6px 8px;
 }
 .header .mobi-toggler i {
   display: none;
 }
 .header .mobi-toggler:hover {
-  background: #e34f00 url(../img/icons/toggler.png) no-repeat 6px -28px;
+  background: #e34f00 url(../assets/frontend/layout/img/icons/toggler.png) no-repeat 6px -28px;
   border-color: #e34f00;
   color: #fff;
 }
@@ -964,7 +964,7 @@ Sidebar
 .sidebar .fa-angle-down {
 	width: 11px;
 	height: 11px;
-	background: url(../img/icons/sidebar-toggle-icons.png) no-repeat 0 0;
+	background: url(../assets/frontend/layout/img/icons/sidebar-toggle-icons.png) no-repeat 0 0;
 	position: absolute;
 	top: 12px;
 	right: 10px;

@@ -7,12 +7,12 @@
   <div class="container">
     <a class="site-logo" href="shop-index.html"><img src="../../assets/frontend/layout/img/logos/logo-shop-red.png" alt="Metronic Shop UI"></a>
 
-    <a href="javascript:void(0);" class="mobi-toggler"><i class="fa fa-bars"></i></a>
+    <a (click)="showMenu()" class="mobi-toggler"><i class="fa fa-bars"></i></a>
 
 
    
     <!-- BEGIN NAVIGATION -->
-    <div class="header-navigation">
+    <div class="header-navigation" [@visibilityChanged]="visibility" >
       <ul>
 
         <li *ngFor="let item of menu" [class.dropdown]="item.children">

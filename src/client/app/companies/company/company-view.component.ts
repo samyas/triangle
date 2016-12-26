@@ -2,8 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { CompaniesService } from '../companies.service';
 import { Company } from '../companies.model';
 
+
 /**
- * This class represents the lazy loaded CompanyViewComponent.
+ * 
+ * 
+ * @export
+ * @class CompanyViewComponent
+ * @implements {OnInit}
  */
 @Component({
   moduleId: module.id,
@@ -14,25 +19,46 @@ import { Company } from '../companies.model';
 
 export class CompanyViewComponent implements OnInit {
 
+   /**
+    * 
+    * 
+    * @type {Array<Company>}
+    * @memberOf CompanyViewComponent
+    */
    public companies: Array<Company>;
+   /**
+    * 
+    * 
+    * @type {string}
+    * @memberOf CompanyViewComponent
+    */
    public errorMessage: string;
+
   /**
-   * Creates an instance of the CompanyListComponent with the injected
-   * CompaniesService.
-   *
-   * @param {CompaniesService} CompaniesService - The injected CompaniesService.
+   * Creates an instance of CompanyViewComponent.
+   * 
+   * @param {CompaniesService} companyService
+   * 
+   * @memberOf CompanyViewComponent
    */
   constructor(public companyService: CompaniesService) {}
 
+
   /**
-   * Get the companies OnInit
+   * 
+   * 
+   * 
+   * @memberOf CompanyViewComponent
    */
   ngOnInit() {
     this.getCompanies();
   }
 
   /**
-   * Handle the companiesService observable
+   * 
+   * 
+   * 
+   * @memberOf CompanyViewComponent
    */
   getCompanies() {
     this.companyService.getCompanyList()

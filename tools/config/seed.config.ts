@@ -343,6 +343,11 @@ export class SeedConfig {
       '@angular/platform-browser': 'node_modules/@angular/platform-browser/bundles/platform-browser.umd.js',
       '@angular/platform-browser-dynamic': 'node_modules/@angular/platform-browser-dynamic/bundles/platform-browser-dynamic.umd.js',
       '@angular/router': 'node_modules/@angular/router/bundles/router.umd.js',
+      'ng2-tag-input': '/node_modules/ng2-tag-input',
+      'ng2-material-dropdown': '/node_modules/ng2-material-dropdown',
+      'ng2-ckeditor': '/node_modules/ng2-ckeditor',
+      'ckeditor' : 'node_modules/ckeditor',
+
 
       '@angular/common/testing': 'node_modules/@angular/common/bundles/common-testing.umd.js',
       '@angular/compiler/testing': 'node_modules/@angular/compiler/bundles/compiler-testing.umd.js',
@@ -360,6 +365,24 @@ export class SeedConfig {
       '*': 'node_modules/*'
     },
     packages: {
+      'ng2-tag-input': {
+        main: 'dist/ng2-tag-input.bundle.js',
+        defaultExtension: 'js'
+      },
+
+      'ng2-material-dropdown': {
+         main: 'dist/ng2-dropdown.bundle.js',
+         defaultExtension: 'js'
+      },
+      'ckeditor': {
+        main:'ckeditor.js',
+        defaultExtension:'js'
+      },
+
+      'ng2-ckeditor': {
+        main: 'lib/index.js',
+        defaultExtension: 'js',
+      },
     }
   };
 
@@ -430,7 +453,25 @@ export class SeedConfig {
       'rxjs': {
         main: 'Rx.js',
         defaultExtension: 'js'
-      }
+      },
+      'ng2-tag-input': {
+        main: 'dist/ng2-tag-input.bundle.js',
+        defaultExtension: 'js'
+      },
+       'ng2-material-dropdown': {
+         main: 'dist/ng2-dropdown.bundle.js',
+         defaultExtension: 'js'
+      },
+
+      'ckeditor': {
+        main:'ckeditor.js',
+        defaultExtension:'js'
+      },
+
+      'ng2-ckeditor': {
+        main: 'lib/index.js',
+        defaultExtension: 'js',
+      },
     }
   };
 

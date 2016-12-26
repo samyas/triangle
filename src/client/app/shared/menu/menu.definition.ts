@@ -38,6 +38,32 @@ export var MENU: Array<NavBarItem> = [
             },
 
 
+            {
+                name: 'Projects',
+                path: '/projects',
+                icon: 'icon-companies',
+                children: [
+                     {
+                        name: 'Activities',
+                        path: '/activities',
+                        icon: 'icon-activities',
+                        children: null
+                    },
+                     {
+                        name: 'List',
+                        path: '/list',
+                        icon: 'icon-home',
+                        children: null
+                    },
+                     {
+                        name: 'Engineers',
+                        path: '/engineers',
+                        icon: 'icon-home',
+                        children: null
+                    }
+                ]
+            },
+
              {
                 name: 'Universities',
                 path: '/universities',

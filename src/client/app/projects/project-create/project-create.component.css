@@ -1,0 +1,25 @@
+.checkout-page h2 {
+    background: #a7b0b8;
+    color: #fff;
+    font: 17px 'PT Sans Narrow', sans-serif;
+    margin: 0 0 15px;
+}
+
+.accordion .panel .panel-title .accordion-toggle {
+    display: block;
+    padding: 10px 15px;
+}
+.checkout-page h2 a {
+    color: #fff;
+    display: block;
+    padding: 9px 20px 8px !important;
+}
+.checkout-page a {
+    color: #767F88;
+}
+
+.checkout-page .panel-body {
+    border: none !important;
+    padding-left: 20px;
+    padding-right: 20px;
+}

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, trigger, state, animate, transition, style,  OnInit } from '@angular/core';
 
 import { NavBarItem } from './navbar.model';
 
@@ -8,6 +8,13 @@ import { NavBarItem } from './navbar.model';
 @Component({
   moduleId: module.id,
   selector: 'sd-navbar',
+   animations: [
+      trigger('visibilityChanged', [
+        state('shown' , style({ display: 'block' })),
+        state('hidden', style({ display: 'none' })),
+        transition('* => *', animate('.5s'))
+      ])
+  ],
   templateUrl: 'navbar.component.html',
   //styleUrls: ['navbar.component.css'],
 })
@@ -15,6 +22,8 @@ import { NavBarItem } from './navbar.model';
 export class NavbarComponent  implements OnInit {
 
   @Input('menu') menu: Array<NavBarItem>;
+  visibility = 'shown';
+  isVisible : boolean = true;
 
    /**
    * Creates an instance of the HomeComponent with the injected
@@ -23,6 +32,12 @@ export class NavbarComponent  implements OnInit {
    * @param {NameListService} nameListService - The injected NameListService.
    */
   constructor() {}
+
+
+  showMenu() {
+    this.isVisible = !this.isVisible;
+    this.visibility = this.isVisible ? 'shown' : 'hidden';
+  }
 
   /**
    * Get the names OnInit
