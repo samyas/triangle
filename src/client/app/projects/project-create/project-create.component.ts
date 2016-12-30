@@ -3,6 +3,7 @@ import { CustomValidators } from '../../shared/index';
 import { ProjectsService } from '../projects.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Project } from '../model/projects.model';
+import { FileSelectDirective, FileDropDirective, FileUploader } from 'ng2-file-upload/ng2-file-upload';
 
 /**
  * This class represents the lazy loaded ProjectViewComponent.
@@ -15,6 +16,8 @@ import { Project } from '../model/projects.model';
 })
 
 export class ProjectCreateComponent implements OnInit {
+
+  public URL: string = 'https://evening-anchorage-3159.herokuapp.com/api/';
 
   public project: Project = new Project('', '', '', '', '', '', '', '', '');
   public errorMessage: string;
@@ -39,6 +42,13 @@ export class ProjectCreateComponent implements OnInit {
     'Potato',
     'Peach'
   ];
+
+  public file_srcs: string[] = [];
+
+  public uploader:FileUploader = new FileUploader({url: this.URL});
+  public hasBaseDropZoneOver:boolean = false;
+  public hasAnotherDropZoneOver:boolean = false;
+
 
   items = ['Pizza', 'Pasta', 'Parmesan'];
 
@@ -106,6 +116,40 @@ export class ProjectCreateComponent implements OnInit {
     this.value = value;
   }
 
+  public fileOverBase(e:any):void {
+    this.hasBaseDropZoneOver = e;
+
+    console.log('sousousou:' + this.hasBaseDropZoneOver);
+  }
+
+  public fileOverAnother(e:any):void {
+    this.hasAnotherDropZoneOver = e;
+  }
+
+  public displayImage(file: any) {
+
+     // Create the file reader
+    let reader = new FileReader();
+     // Start reading this file
+      this.readFile(file, reader, (result: any) =>{
+        // After the callback fires do:
+        this.file_srcs.push(result);
+      });
+  }
+
+
+  readFile(file: any, reader: any, callback: any){
+    // Set a callback funtion to fire after the file is fully loaded
+    reader.onload = () => {
+      // callback with the results
+      callback(reader.result);
+    }
+
+    // Read the file
+    reader.readAsDataURL(file);
+  }
+
+
 
   /**
    * OnInit
@@ -113,6 +157,13 @@ export class ProjectCreateComponent implements OnInit {
   ngOnInit() {
     this.buildForm();
   }
+
+ onChange() {}
+ onReady() {}
+ onFocus() {}
+
+
+
 
   /**
    * Handle the projectsService observable

@@ -347,7 +347,7 @@ export class SeedConfig {
       'ng2-material-dropdown': '/node_modules/ng2-material-dropdown',
       'ng2-ckeditor': '/node_modules/ng2-ckeditor',
       'ckeditor' : 'node_modules/ckeditor',
-
+      'ng2-file-upload' : 'node_modules/ng2-file-upload',
 
       '@angular/common/testing': 'node_modules/@angular/common/bundles/common-testing.umd.js',
       '@angular/compiler/testing': 'node_modules/@angular/compiler/bundles/compiler-testing.umd.js',
@@ -381,6 +381,11 @@ export class SeedConfig {
 
       'ng2-ckeditor': {
         main: 'lib/index.js',
+        defaultExtension: 'js',
+      },
+
+       'ng2-file-upload': {
+        main: 'index.js',
         defaultExtension: 'js',
       },
     }
@@ -470,6 +475,10 @@ export class SeedConfig {
 
       'ng2-ckeditor': {
         main: 'lib/index.js',
+        defaultExtension: 'js',
+      },
+      'ng2-file-upload': {
+        main: 'index.js',
         defaultExtension: 'js',
       },
     }

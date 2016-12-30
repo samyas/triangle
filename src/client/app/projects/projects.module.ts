@@ -13,6 +13,8 @@ import { projectsRouting } from './projects.routes';
 
 import { SelectModule } from 'ng2-select/ng2-select';
 import { TagInputModule } from 'ng2-tag-input';
+import { FileUploadModule } from 'ng2-file-upload';
+import { FileSelectDirective, FileDropDirective, FileUploader } from 'ng2-file-upload/ng2-file-upload';
 //import * as ckeditor from 'ckeditor';
 
 require('ckeditor/ckeditor.js');
@@ -22,7 +24,8 @@ import { CKEditorModule } from 'ng2-ckeditor';
 
 
 @NgModule({
-  imports: [CommonModule, SelectModule, TagInputModule, CKEditorModule, SharedModule, ReactiveFormsModule,  projectsRouting],
+  imports: [CommonModule, SelectModule, TagInputModule, FileUploadModule,
+  CKEditorModule, SharedModule, ReactiveFormsModule,  projectsRouting],
   declarations: [ProjectsComponent, ProjectViewComponent, ProjectListComponent, ProjectCreateComponent],
   providers: [NameListService, ProjectsService]
 })
