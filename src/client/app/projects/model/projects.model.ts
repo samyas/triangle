@@ -11,3 +11,28 @@ export class Project {
         public vat: string
         ) {}
 }
+
+
+export class Organisation {
+    id: string;
+}
+
+export class Team {
+    id: string;
+    title: string;
+    members: Array<Member> = [new Member()];
+}
+
+
+export class Member {
+    id: string;
+    name: string;
+}
+
+
+export class Budget {
+    id: string;
+    description: string;
+    quantity: number;
+    unitPice: number;
+}

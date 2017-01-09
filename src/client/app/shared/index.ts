@@ -8,4 +8,6 @@ export * from './components/sidebar/index';
 export * from './components/navbar/index';
 export * from './components/toolbar/index';
 export * from './components/forms/index';
+export * from './components/wizard/index';
+export * from './components/editList/index';
 export * from './config/env.config';

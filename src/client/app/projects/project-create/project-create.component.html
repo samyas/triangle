@@ -3,335 +3,482 @@
 
 <a> hjoooo </a>
     
-<div class="panel-group checkout-page accordion scrollable" id="checkout-page">
+<div class="panel-group checkout-page accordion scrollable form-wizard" id="checkout-page">
 
-              <!-- BEGIN PAYMENT ADDRESS -->
-              <div id="payment-address" class="panel panel-default">
-                <div class="panel-heading">
-                  <h2 class="panel-title">
-                    <a data-toggle="collapse" data-parent="#checkout-page" href="#payment-address-content" class="accordion-toggle">
-                      Step 1: Project &amp; Address Details
-                    </a>
-                  </h2>
-                </div>
-                <div id="payment-address-content" class="panel-collapse collapse in">
-                  <div class="panel-body row">
-                   <form [formGroup]="projectForm" (ngSubmit)="onSubmit()">
-                    <div class="col-md-6 col-sm-6">
-                      <h3>Basic Information</h3>
-                      <div class="form-group">
-                        <label for="project">Project Name<span class="require">*</span></label>
-                        <input type="text" id="name" class="form-control" formControlName="name">
-                        <div *ngIf="formErrors.name" class="alert alert-danger">
-                          {{ formErrors.name }}
-                        </div>
-                      </div>
-                      <div class="form-group">
-                        <label for="vat">Categories<span class="require">*</span></label>
-                         <ng-select ng-class="override-close"  (data)="value"
-                            [multiple]="true"
-                            [items]="categories"
-                            [disabled]="disabled"
-                            (data)="refreshValue($event)"
-                            (selected)="selected($event)"
-                            (removed)="removed($event)"
-                            placeholder="No city selected">
-                          </ng-select>
-                      </div>
-
-                      <div class="form-group">
-                        <label for="vat">Sectors<span class="require">*</span></label>
-                         <ng-select ng-class="override-close"  (data)="value"
-                            [multiple]="true"
-                            [items]="categories"
-                            [disabled]="disabled"
-                            (data)="refreshValue($event)"
-                            (selected)="selected($event)"
-                            (removed)="removed($event)"
-                            placeholder="No city selected">
-                          </ng-select>
-                      </div>
-
-
-                      <div class="form-group">
-                        <label for="business-type">Reference <span class="require">*</span></label>
-                        <select class="form-control input-sm" id="business-type">
-                          <option value=""> --- Please Select --- </option>
-                          <option value="3513">Company</option>
-                          <option value="3514">University</option>
-                          <option value="3515">Club</option>
-                          <option value="3515">Associations</option>
-                          <option value="3516">Free</option>
-                        </select>
-                      </div>
-                      <div class="form-group">
-                        <label for="email">Kewords <span class="require">*</span></label>
-                        <tag-input formControlName="items"
-                            [autocompleteItems]="['Item1', 'item2', 'item3']">
-                                <tag-input-dropdown>
-                                  <template let-item="item" let-index="index">
-                                      {{ item }}
-                                  </template>
-                                </tag-input-dropdown>
-
-                        </tag-input>
-                        <!--tag-input [ngModel]="['@item']"
-                          [autocompleteItems]="['item1', 'item2']" [ngModelOptions]="{standalone: true}"
-                          >
-                        </tag-input-->
-                      </div>
-                      <div class="form-group">
-                        <label for="telephone">Telephone <span class="require">*</span></label>
-                        <input type="text" id="telephone" class="form-control">
-                      </div>
-                      <div class="form-group">
-                        <label for="fax">Fax </label>
-                        <input type="text" id="fax" class="form-control" >
-                        
-                      </div>
+             
+              
+             <ng-wizard>
+            
+        
+                  <!-- BEGIN PAYMENT ADDRESS -->
+                  <div [wizardStep] = '1' visibility=true id="payment-address" class="panel panel-default">
+                    <div class="panel-heading">
+                      <h2 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#checkout-page" href="#payment-address-content" class="accordion-toggle">
+                          Step 1: Project &amp; Address Details
+                        </a>
+                      </h2>
                     </div>
-                    <div class="col-md-6 col-sm-6">
-                      <h3>Your Address</h3>
-                      <div class="form-group">
-                        <label for="address1">Address 1</label>
-                        <input type="text" id="address1" class="form-control">
-                      </div>
-                      <div class="form-group">
-                        <label for="address2">Address 2</label>
-                        <input type="text" id="address2" class="form-control">
-                      </div>
-                      <div class="form-group">
-                        <label for="city">City <span class="require">*</span></label>
-                        <input type="text" id="city" class="form-control">
-                      </div>
-                      <div class="form-group">
-                        <label for="post-code">Post Code <span class="require">*</span></label>
-                        <input type="text" id="post-code" class="form-control">
-                      </div>
-                      <div class="form-group">
-                        <label for="country">Country <span class="require">*</span></label>
-                        <select class="form-control input-sm" id="country">
-                          <option value=""> --- Please Select --- </option>
-                          <option value="244">Aaland Islands</option>
-                          <option value="1">Afghanistan</option>
-                          <option value="2">Albania</option>
-                        </select>
-                      </div>
-                      <div class="form-group">
-                        <label for="region-state">Region/State <span class="require">*</span></label>
-                        <select class="form-control input-sm" id="region-state">
-                          <option value=""> --- Please Select --- </option><option value="3513">Aberdeen</option><option value="3514">Aberdeenshire</option><option value="3515">Anglesey</option>
-                        </select>
-                      </div>
-                    </div>
-                    <hr>
-                    <div class="col-md-12">                      
-                      <div>
-                        <label>
-                          <input type="checkbox"> I wish to subscribe to the OXY newsletter. 
-                        </label>
-                      </div>
-                      <div>
-                        <label>
-                          <input type="checkbox" checked="checked"> My delivery and billing addresses are the same.
-                        </label>
-                      </div>
-                      <button class="btn btn-primary  pull-right" type="submit"  [disabled]="!projectForm.valid" data-toggle="collapse" data-parent="#checkout-page" data-target="#shipping-address-content" id="button-payment-address">Create</button>
-                      <div class="checkbox pull-right">
-                        <label>
-                          <input type="checkbox"> I have read and agree to the <a title="Privacy Policy" href="javascript:;">Privacy Policy</a> &nbsp;&nbsp;&nbsp; 
-                        </label>
-                      </div>                        
-                    </div>
-                   </form>
-                  </div>
-                </div>
-              </div>
-              <!-- END PAYMENT ADDRESS -->     
-
-                      <!-- BEGIN PAYMENT ADDRESS -->
-              <div id="payment-address" class="panel panel-default">
-                <div class="panel-heading">
-                  <h2 class="panel-title">
-                    <a data-toggle="collapse" data-parent="#checkout-page" href="#payment-address-content" class="accordion-toggle">
-                      Step 1: Project &amp; Address Details
-                    </a>
-                  </h2>
-                </div>
-                <div id="payment-address-content" class="panel-collapse collapse in">
-                  <div class="panel-body row">
-                   <form [formGroup]="projectForm" (ngSubmit)="onSubmit()">
-                    <div class="col-md-6 col-sm-6">
-                      <h3>Basic Information</h3>
-                      <div class="form-group">
-                        <label for="project">Project Description<span class="require">*</span></label>
-                        <ckeditor
-                          formControlName="ckeditorContent"
-                          [config]="{uiColor: '#d1d1d1'}"
-                          (change)="onChange($event)"
-                          (ready)="onReady($event)"
-                          (focus)="onFocus($event)"
-                          (blur)="onBlur($event)"
-                          debounce="500">
-                        </ckeditor>
-                      </div>
-                    </div>
-                    <div class="col-md-6 col-sm-6">
-                      <h3>Your Address</h3>
-                      <div class="form-group">
-                        <label for="address1">Address 1</label>
-                        <input type="text" id="address1" class="form-control">
-                      </div>
-                     
-                    </div>
-                    <hr>
-                    <div class="col-md-12">                      
-                      <div>
-                        <label>
-                          <input type="checkbox"> I wish to subscribe to the OXY newsletter. 
-                        </label>
-                      </div>
-                      <div>
-                        <label>
-                          <input type="checkbox" checked="checked"> My delivery and billing addresses are the same.
-                        </label>
-                      </div>
-                      <button class="btn btn-primary  pull-right" type="submit"  [disabled]="!projectForm.valid" data-toggle="collapse" data-parent="#checkout-page" data-target="#shipping-address-content" id="button-payment-address">Create</button>
-                      <div class="checkbox pull-right">
-                        <label>
-                          <input type="checkbox"> I have read and agree to the <a title="Privacy Policy" href="javascript:;">Privacy Policy</a> &nbsp;&nbsp;&nbsp; 
-                        </label>
-                      </div>                        
-                    </div>
-                   </form>
-                  </div>
-                </div>
-              </div>
-              <!-- END PAYMENT ADDRESS -->    
-
-
-
-
-              <!-- BEGIN PAYMENT ADDRESS -->
-              <div id="payment-address" class="panel panel-default">
-                <div class="panel-heading">
-                  <h2 class="panel-title">
-                    <a data-toggle="collapse" data-parent="#checkout-page" href="#payment-address-content" class="accordion-toggle">
-                      Step 1: Project &amp; Address Details
-                    </a>
-                  </h2>
-                </div>
-                <div id="payment-address-content" class="panel-collapse collapse in">
-                  <div class="panel-body row">
-                   <form [formGroup]="projectForm" (ngSubmit)="onSubmit()">
-                    <div class="col-md-6 col-sm-6">
-                      <h3>Basic Information</h3>
-                      <div class="form-group">
-                        <label for="project">Screenshots <span class="require">*</span></label>
-                        <div ng2FileDrop
-                            [ngClass]="{'nv-file-over': hasBaseDropZoneOver}"
-                            (fileOver)="fileOverBase($event)"
-                            [uploader]="uploader"
-                            class="well my-drop-zone">
-                            Base drop zone
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-md-6 col-sm-6">
-                        <table class="table">
-                          <thead>
-                          <tr>
-                              <th width="50%">Name</th>
-                              <th>Size</th>
-                              <th>Progress</th>
-                              <th>Status</th>
-                              <th>Actions</th>
-                          </tr>
-                          </thead>
-                          <tbody>
-                          <tr *ngFor="let item of uploader.queue">
-                              <td><strong>{{ item?.file?.name }}</strong></td>
-                              <td *ngIf="uploader.isHTML5" nowrap>{{ item?.file?.size/1024/1024 | number:'.2' }} MB</td>
-                              <td *ngIf="uploader.isHTML5">
-                                  <div class="progress" style="margin-bottom: 0;">
-                                      <div class="progress-bar" role="progressbar" [ngStyle]="{ 'width': item.progress + '%' }"></div>
-                                  </div>
-                              </td>
-                              <td class="text-center">
-                                  <span *ngIf="item.isSuccess"><i class="glyphicon glyphicon-ok"></i></span>
-                                  <span *ngIf="item.isCancel"><i class="glyphicon glyphicon-ban-circle"></i></span>
-                                  <span *ngIf="item.isError"><i class="glyphicon glyphicon-remove"></i></span>
-                              </td>
-                              <td nowrap>
-                                  <button type="button" class="btn btn-success btn-xs"
-                                          (click)="item.upload()" [disabled]="item.isReady || item.isUploading || item.isSuccess">
-                                      <span class="glyphicon glyphicon-upload"></span> Upload
-                                  </button>
-                                  <button type="button" class="btn btn-warning btn-xs"
-                                          (click)="item.cancel()" [disabled]="!item.isUploading">
-                                      <span class="glyphicon glyphicon-ban-circle"></span> Cancel
-                                  </button>
-                                  <button type="button" class="btn btn-danger btn-xs"
-                                          (click)="item.remove()">
-                                      <span class="glyphicon glyphicon-trash"></span> Remove
-                                  </button>
-
-                                    <button type="button" class="btn btn-success btn-xs"
-                                          (click)="displayImage(item._file)" [disabled]="item.isReady || item.isUploading || item.isSuccess">
-                                      <span class="glyphicon glyphicon-upload"></span> Display Image
-                                  </button>
-                              </td>
-                          </tr>
-                          </tbody>
-                      </table>
-                     
-                    <div>
-                          <div>
-                              Queue progress:
-                              <div class="progress" style="">
-                                  <div class="progress-bar" role="progressbar" [ngStyle]="{ 'width': uploader.progress + '%' }"></div>
-                              </div>
+                    <div id="payment-address-content" class="panel-collapse collapse in">
+                      <div class="panel-body row">
+                      <form [formGroup]="projectForm" (ngSubmit)="onSubmit()">
+                        <div class="col-md-6 col-sm-6">
+                          <h3>Basic Information</h3>
+                          <div class="form-group">
+                            <label for="project">Project Name<span class="require">*</span></label>
+                            <input type="text" id="name" class="form-control" formControlName="name">
+                            <div *ngIf="formErrors.name" class="alert alert-danger">
+                              {{ formErrors.name }}
+                            </div>
                           </div>
-                          <button type="button" class="btn btn-success btn-s"
-                                  (click)="uploader.uploadAll()" [disabled]="!uploader.getNotUploadedItems().length">
-                              <span class="glyphicon glyphicon-upload"></span> Upload all
-                          </button>
-                          <button type="button" class="btn btn-warning btn-s"
-                                  (click)="uploader.cancelAll()" [disabled]="!uploader.isUploading">
-                              <span class="glyphicon glyphicon-ban-circle"></span> Cancel all
-                          </button>
-                          <button type="button" class="btn btn-danger btn-s"
-                                  (click)="uploader.clearQueue()" [disabled]="!uploader.queue.length">
-                              <span class="glyphicon glyphicon-trash"></span> Remove all
-                          </button>
-                      </div>
-                    </div>
-                    <hr>
-                    <div class="col-md-12">    
+                          <div class="form-group">
+                            <label for="title">Title</label>
+                            <input type="text" id="title" class="form-control">
+                          </div>
 
-                      <div *ngFor="let file_src of file_srcs">  
-                        <img [attr.src]='file_src' alt=""/>
-                      </div>                   
-                      <div>
-                        <label>
-                          <input type="checkbox"> I wish to subscribe to the OXY newsletter. 
-                        </label>
+
+                          <!--div class="form-group">
+                            <label for="business-type">Reference <span class="require">*</span></label>
+                            <select class="form-control input-sm" id="business-type">
+                              <option value=""> --- Please Select --- </option>
+                              <option value="3513">Company</option>
+                              <option value="3514">University</option>
+                              <option value="3515">Club</option>
+                              <option value="3515">Associations</option>
+                              <option value="3516">Free</option>
+                            </select>
+                          </div-->
+
+                         
+                          <div class="form-group">
+                            <label for="short-description">Short Description <span class="require">*</span></label>
+                            <textarea type="text" id="short-description" class="form-control"></textarea>
+                          </div>
+                         
+                        </div>
+                        <div class="col-md-6 col-sm-6">
+                          <h3> Categorization </h3>
+                        
+                           <div class="form-group">
+                            <label for="vat">Categories<span class="require">*</span></label>
+                            <ng-select ng-class="override-close"  (data)="value"
+                                [multiple]="true"
+                                [items]="categories"
+                                [disabled]="disabled"
+                                (data)="refreshValue($event)"
+                                (selected)="selected($event)"
+                                (removed)="removed($event)"
+                                placeholder="No city selected">
+                              </ng-select>
+                          </div>
+                           <div class="form-group">
+                            <label for="vat">Sectors<span class="require">*</span></label>
+                            <ng-select ng-class="override-close"  (data)="value"
+                                [multiple]="true"
+                                [items]="categories"
+                                [disabled]="disabled"
+                                (data)="refreshValue($event)"
+                                (selected)="selected($event)"
+                                (removed)="removed($event)"
+                                placeholder="No city selected">
+                              </ng-select>
+                          </div>
+                           <div class="form-group">
+                            <label for="email">Kewords <span class="require">*</span></label>
+                            <tag-input formControlName="items"
+                                [autocompleteItems]="['Item1', 'item2', 'item3']">
+                                    <tag-input-dropdown>
+                                      <template let-item="item" let-index="index">
+                                          {{ item }}
+                                      </template>
+                                    </tag-input-dropdown>
+
+                            </tag-input>
+                   
+                          </div>
+                        
+                        </div>
+                        <hr>
+                        <div class="col-md-12">                      
+                           <div class="form-group">
+                            <label for="project">Long Description<span class="require">*</span></label>
+                            <ckeditor
+                              formControlName="ckeditorContent"
+                              [config]="{uiColor: '#d1d1d1'}"
+                              (change)="onChange($event)"
+                              (ready)="onReady($event)"
+                              (focus)="onFocus($event)"
+                              (blur)="onBlur($event)"
+                              debounce="500">
+                            </ckeditor>
+                          </div>
+
+                          <div class="form-group">
+                            <label for="project">Icons <span class="require">*</span></label>
+                            <div ng2FileDrop
+                                [ngClass]="{'nv-file-over': hasBaseDropZoneOver}"
+                                (fileOver)="fileOverBase($event)"
+                                [uploader]="uploader"
+                                class="well my-drop-zone">
+                                
+                                  <div class="image-container hr-inline-group">
+                                      <div
+                                        class="image"
+                                        *ngFor="let file of files"
+                                        [ngStyle]="{'background-image': 'url('+ file.src +')'}"
+                                      >
+                                        <div *ngIf="file.pending" class="loading-overlay">
+                                          <div class="spinningCircle"></div>
+                                        </div>
+                                        <div *ngIf="!file.pending" class="x-mark" (click)="deleteFile(file)">
+                                          <span class="close"></span>
+                                        </div>
+                                      </div>
+                                    </div>
+                            </div>
+                          </div>
+
+                          <div class="form-group">
+                            <label for="project">Screenshots <span class="require">*</span></label>
+                            <div ng2FileDrop
+                                [ngClass]="{'nv-file-over': hasBaseDropZoneOver}"
+                                (fileOver)="fileOverBase($event)"
+                                [uploader]="uploader"
+                                class="well my-drop-zone">
+                                
+                                  <div class="image-container hr-inline-group">
+                                      <div
+                                        class="image"
+                                        *ngFor="let file of files"
+                                        [ngStyle]="{'background-image': 'url('+ file.src +')'}"
+                                      >
+                                        <div *ngIf="file.pending" class="loading-overlay">
+                                          <div class="spinningCircle"></div>
+                                        </div>
+                                        <div *ngIf="!file.pending" class="x-mark" (click)="deleteFile(file)">
+                                          <span class="close"></span>
+                                        </div>
+                                      </div>
+                                    </div>
+                            </div>
+                          </div>
+
+
+                          <div class="form-group">
+                            <label for="project">Resource <span class="require">*</span></label>
+                            <div ng2FileDrop
+                                [ngClass]="{'nv-file-over': hasBaseDropZoneOver}"
+                                (fileOver)="fileOverBase($event)"
+                                [uploader]="uploader"
+                                class="well my-drop-zone">
+                                
+                                  <div class="image-container hr-inline-group">
+                                      <div
+                                        class="image"
+                                        *ngFor="let file of files"
+                                        [ngStyle]="{'background-image': 'url('+ file.src +')'}"
+                                      >
+                                        <div *ngIf="file.pending" class="loading-overlay">
+                                          <div class="spinningCircle"></div>
+                                        </div>
+                                        <div *ngIf="!file.pending" class="x-mark" (click)="deleteFile(file)">
+                                          <span class="close"></span>
+                                        </div>
+                                      </div>
+                                    </div>
+                            </div>
+                               <div class="col-md-6 col-sm-6">
+                            <table class="table">
+                              <thead>
+                              <tr>
+                                  <th width="50%">Name</th>
+                                  <th>Size</th>
+                                  <th>Progress</th>
+                                  <th>Status</th>
+                                  <th>Actions</th>
+                              </tr>
+                              </thead>
+                              <tbody>
+                              <tr *ngFor="let item of uploader.queue">
+                                  <td><strong>{{ item?.file?.name }}</strong></td>
+                                  <td *ngIf="uploader.isHTML5" nowrap>{{ item?.file?.size/1024/1024 | number:'.2' }} MB</td>
+                                  <td *ngIf="uploader.isHTML5">
+                                      <div class="progress" style="margin-bottom: 0;">
+                                          <div class="progress-bar" role="progressbar" [ngStyle]="{ 'width': item.progress + '%' }"></div>
+                                      </div>
+                                  </td>
+                                  <td class="text-center">
+                                      <span *ngIf="item.isSuccess"><i class="glyphicon glyphicon-ok"></i></span>
+                                      <span *ngIf="item.isCancel"><i class="glyphicon glyphicon-ban-circle"></i></span>
+                                      <span *ngIf="item.isError"><i class="glyphicon glyphicon-remove"></i></span>
+                                  </td>
+                                  <td nowrap>
+                                      <button type="button" class="btn btn-success btn-xs"
+                                              (click)="item.upload()" [disabled]="item.isReady || item.isUploading || item.isSuccess">
+                                          <span class="glyphicon glyphicon-upload"></span> Upload
+                                      </button>
+                                      <button type="button" class="btn btn-warning btn-xs"
+                                              (click)="item.cancel()" [disabled]="!item.isUploading">
+                                          <span class="glyphicon glyphicon-ban-circle"></span> Cancel
+                                      </button>
+                                      <button type="button" class="btn btn-danger btn-xs"
+                                              (click)="item.remove()">
+                                          <span class="glyphicon glyphicon-trash"></span> Remove
+                                      </button>
+
+                                        <button type="button" class="btn btn-success btn-xs"
+                                              (click)="displayImage(item._file)" [disabled]="item.isReady || item.isUploading || item.isSuccess">
+                                          <span class="glyphicon glyphicon-upload"></span> Display Image
+                                      </button>
+                                  </td>
+                              </tr>
+                              </tbody>
+                          </table>
+                        
+                          <div>
+                                <div>
+                                    Queue progress:
+                                    <div class="progress" style="">
+                                        <div class="progress-bar" role="progressbar" [ngStyle]="{ 'width': uploader.progress + '%' }"></div>
+                                    </div>
+                                </div>
+                                <button type="button" class="btn btn-success btn-s"
+                                        (click)="uploader.uploadAll()" [disabled]="!uploader.getNotUploadedItems().length">
+                                    <span class="glyphicon glyphicon-upload"></span> Upload all
+                                </button>
+                                <button type="button" class="btn btn-warning btn-s"
+                                        (click)="uploader.cancelAll()" [disabled]="!uploader.isUploading">
+                                    <span class="glyphicon glyphicon-ban-circle"></span> Cancel all
+                                </button>
+                                <button type="button" class="btn btn-danger btn-s"
+                                        (click)="uploader.clearQueue()" [disabled]="!uploader.queue.length">
+                                    <span class="glyphicon glyphicon-trash"></span> Remove all
+                                </button>
+                            </div>
+                          </div>
+                          </div>
+
+
+                          
+                        </div>
+                      </form>
                       </div>
-                      <div>
-                        <label>
-                          <input type="checkbox" checked="checked"> My delivery and billing addresses are the same.
-                        </label>
-                      </div>
-                      <button class="btn btn-primary  pull-right" type="submit"  [disabled]="!projectForm.valid" data-toggle="collapse" data-parent="#checkout-page" data-target="#shipping-address-content" id="button-payment-address">Create</button>
-                      <div class="checkbox pull-right">
-                        <label>
-                          <input type="checkbox"> I have read and agree to the <a title="Privacy Policy" href="javascript:;">Privacy Policy</a> &nbsp;&nbsp;&nbsp; 
-                        </label>
-                      </div>                        
                     </div>
-                   </form>
                   </div>
-                </div>
-              </div>
-              <!-- END PAYMENT ADDRESS -->         
+                  <!-- END PAYMENT ADDRESS -->     
+     
+           
+                  <!-- BEGIN PAYMENT ADDRESS -->
+                  <div [wizardStep] = '2' id="payment-address" class="panel panel-default">
+                    <div class="panel-heading">
+                      <h2 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#checkout-page" href="#payment-address-content" class="accordion-toggle">
+                          Step 2: Belongs To
+                        </a>
+                      </h2>
+                    </div>
+                    <div id="payment-address-content" class="panel-collapse collapse in">
+                      <div class="panel-body row">
+                      <form [formGroup]="projectForm" class="form-horizontal" (ngSubmit)="onSubmit()">
+                        <div class="col-md-12">
+                          <h3>Organisations & Teams</h3>
+                          <div class="form-group">
+                            <div class="col-md-4 col-sm-4"><label for="project">Organisation Type:<span class="require">*</span></label></div>
+                             <div class="col-md-4 col-sm-4"> 
+                                <div> <label><input type="checkbox" checked="checked"> Universities </label></div>
+                                <div> <label><input type="checkbox" checked="checked"> Companies </label></div>
+                                <div> <label><input type="checkbox" checked="checked"> Club </label></div>
+                                <div> <label><input type="checkbox" checked="checked"> Associations </label></div>
+                            </div>
+                            <div class="col-md-4 col-sm-4"> 
+                                <div> <label><input type="checkbox" checked="checked"> Goverments </label></div>
+                                <div> <label><input type="checkbox" checked="checked"> International </label></div>
+                                <div> <label><input type="checkbox" checked="checked"> Freelancers </label></div>
+                            </div>
+                          </div>
+                        </div>
+                        <hr>
+                        <div class="col-md-12">
+                          <h3>What Are?</h3>
+                          <div class="form-group">
+                             <div class="col-md-2 col-sm-2"><label for="project">Universities:<span class="require">*</span></label></div>
+                             <div class="col-md-10 col-sm-10">
+                                  <div class="row">
+                                        <div class="col-md-5 col-sm-5"> 
+                                            <select class="form-control input-sm" id="country">
+                                              <option value=""> --- Please Select Country--- </option>
+                                              <option value="244">Aaland Islands</option>
+                                              <option value="1">Afghanistan</option>
+                                              <option value="2">Albania</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-5 col-sm-5"> 
+                                            <select class="form-control input-sm" id="region-state">
+                                                <option value=""> --- Please Select University--- </option><option value="3513">Aberdeen</option><option value="3514">Aberdeenshire</option><option value="3515">Anglesey</option>
+                                              </select>
+                                        </div>
+                                        <div class="col-md-2 col-sm-2"> 
+                                                <a class="add-icon" >&nbsp;</a>
+                                                <a class="del-icon" >&nbsp;</a>
+                                        </div>
+                                 </div>
+                                 <div class="row">
+                                        <div class="col-md-5 col-sm-5"> 
+                                            <select class="form-control input-sm" id="country">
+                                              <option value=""> --- Please Select Country--- </option>
+                                              <option value="244">Aaland Islands</option>
+                                              <option value="1">Afghanistan</option>
+                                              <option value="2">Albania</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-5 col-sm-5"> 
+                                            <select class="form-control input-sm" id="region-state">
+                                                <option value=""> --- Please Select University--- </option><option value="3513">Aberdeen</option><option value="3514">Aberdeenshire</option><option value="3515">Anglesey</option>
+                                              </select>
+                                        </div>
+                                        <div class="col-md-2 col-sm-2"> 
+                                                <a class="add-icon" >&nbsp;</a>
+                                                <a class="del-icon" >&nbsp;</a>
+                                        </div>
+                                 </div>
+                             </div>
+                          </div>
+
+                           <div class="form-group">
+                             <div class="col-md-2 col-sm-2"><label for="project">Companies:<span class="require">*</span></label></div>
+                             <div class="col-md-10 col-sm-10">
+                                 <edit-list [items]="organisations">
+                                    <div template="let item" class="col-md-12 no-padding">
+                                        <div class="col-md-6 col-sm-6"> 
+                                            <select class="form-control input-sm" id="country">
+                                              <option value=""> --- Please Select Country--- </option>
+                                              <option value="244">Aaland Islands</option>
+                                              <option value="1">Afghanistan</option>
+                                              <option value="2">Albania</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-6 col-sm-6"> 
+                                            <select class="form-control input-sm" id="region-state">
+                                                <option value=""> --- Please Select University--- </option><option value="3513">Aberdeen</option><option value="3514">Aberdeenshire</option><option value="3515">Anglesey</option>
+                                              </select>
+                                        </div>
+                                    </div>
+                                 </edit-list>
+                             </div>
+                          </div>
+
+                        </div>
+
+                        <hr>
+                        <div class="col-md-12">
+                          <h3>Teams</h3>
+                          
+                          <edit-list [items]="teams">
+                              <div template="let team" class="col-md-12 panel panel-default">
+                                <form role="form" class="form-horizontal form-without-legend">
+                                <div class="form-group">
+                                  <label class="col-lg-2 control-label" for="title">Title: <span class="require">*</span></label>
+                                  <div class="col-lg-8">
+                                    <input type="text" id="first-name" class="form-control">
+                                  </div>
+                                </div>
+                                <div class="form-group">
+                                  <label  class="col-lg-2 control-label" for="email">Type: <span class="require">*</span></label>
+                                   <div class="col-lg-8">
+                                    <select class="form-control input-sm" id="country">
+                                          <option value=""> --- Please Select Type--- </option>
+                                          <option value="244">Technical Teams</option>
+                                          <option value="1">Financial Teams</option>
+                                          <option value="2">Business Team</option>
+                                          <option value="8">Marqueting Team</option>
+                                    </select>
+                                   </div>
+                                </div>
+                                <div class="form-group">
+                                  <label class="col-lg-2 control-label" for="title">Goal:<span class="require">*</span></label>
+                                  <div class="col-lg-8">
+                                     <textarea type="text" id="title" class="form-control"></textarea>
+                                  </div>
+                                </div>
+                                <div class="form-group">
+                                  
+                                    <label  class="col-lg-2 control-label" for="project">Members:<span class="require">*</span></label>
+                                  
+                                  <div class="col-md-10 col-sm-10">
+                                      <edit-list [items]="team.members">
+                                          <div template="let item" class="col-md-12 no-padding">
+                                              <div class="col-md-6 col-sm-6"> 
+                                                  <input type="text" id="title" class="form-control">
+                                              </div>
+                                              <div class="col-md-6 col-sm-6"> 
+                                                  <select class="form-control input-sm" id="region-state">
+                                                      <option value=""> ---As--- </option>
+                                                      <option value="3513">Aberdeen</option>
+                                                      <option value="3514">Aberdeenshire</option>
+                                                      <option value="3515">Anglesey</option>
+                                                    </select>
+                                              </div>
+                                          </div>
+                                      </edit-list>
+                                  </div>
+                                </div>
+                                </form>
+                              </div>
+                          </edit-list>
+
+                        </div>
+                      </form>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- END PAYMENT ADDRESS -->  
+           
+
+                  <!-- BEGIN PAYMENT ADDRESS -->
+                  <div [wizardStep] = '3' id="payment-address" class="panel panel-default">
+                    <div class="panel-heading">
+                      <h2 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#checkout-page" href="#payment-address-content" class="accordion-toggle">
+                          Step 3: Project &amp;Finance & Budget
+                        </a>
+                      </h2>
+                    </div>
+                    <div id="payment-address-content" class="panel-collapse collapse in">
+                      <div class="panel-body row">
+                      <form [formGroup]="projectForm" (ngSubmit)="onSubmit()">
+                        <div class="col-md-12">
+                          <h3>Budget Information</h3>
+                       
+                           <div class="form-group">
+
+                               <div class="row">
+                                  <div class="col-md-10 col-sm-10 no-padding">
+                                    <div class="col-md-8 col-sm-8"><label for="project">Descrition</label></div>
+                                    <div class="col-md-2 col-sm-2"><label for="project">Quatity</label></div>
+                                    <div class="col-md-2 col-sm-2"><label for="project">Unit Price</label></div>
+                                  </div>
+                               </div>
+                               <hr>
+                                <edit-list [items]="budgets">
+                                    <div template="let item" class="col-md-12 no-padding">
+                                        <div class="col-md-8 col-sm-8"><label for="project">Descrition</label></div>
+                                        <div class="col-md-2 col-sm-2"><label for="project">Quatity</label></div>
+                                        <div class="col-md-2 col-sm-2"><label for="project">Unit Price</label></div>
+                                    </div>
+                                </edit-list>
+
+                          
+                          </div>
+
+                        </div>
+              
+                        <hr>
+                       
+                      </form>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- END PAYMENT ADDRESS -->     
+
+              </ng-wizard>    
  </div>

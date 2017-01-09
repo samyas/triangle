@@ -15,7 +15,7 @@ import { SelectModule } from 'ng2-select/ng2-select';
 import { TagInputModule } from 'ng2-tag-input';
 import { FileUploadModule } from 'ng2-file-upload';
 import { FileSelectDirective, FileDropDirective, FileUploader } from 'ng2-file-upload/ng2-file-upload';
-//import * as ckeditor from 'ckeditor';
+
 
 require('ckeditor/ckeditor.js');
 

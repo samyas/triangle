@@ -1,0 +1,35 @@
+<div class='wizard'> 
+    <ul class="nav nav-pills nav-justified steps">
+        <li class="done">
+            <a (click)="showStep('1')" data-toggle="tab" class="step" aria-expanded="false">
+                <span class="number"> 1 </span>
+                <span class="desc"><i class="fa fa-check"></i> Basic Information </span>
+            </a>
+        </li>
+        <li class="active">
+            <a (click)="showStep('2')" data-toggle="tab" class="step" aria-expanded="true">
+                <span class="number"> 2 </span>
+                <span class="desc"><i class="fa fa-check"></i> Belongs </span>
+            </a>
+        </li>
+        <li class="">
+            <a (click)="showStep('3')" data-toggle="tab" class="step active" aria-expanded="false">
+                <span class="number"> 3 </span>
+                <span class="desc"><i class="fa fa-check"></i> Financial </span>
+            </a>
+        </li>
+        <li>
+            <a (click)="showStep('4')" data-toggle="tab" class="step">
+                <span class="number"> 4 </span>
+                <span class="desc"><i class="fa fa-check"></i> Visiblity & Confirm </span>
+            </a>
+        </li>
+    </ul>
+
+    <div class='wizard-content'>
+        <ng-content></ng-content>
+    </div>
+      
+</div>
+             
+       

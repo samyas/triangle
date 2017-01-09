@@ -10,3 +10,24 @@ a.close {
     text-indent: initial !important;
     color: #67bd3c;
 }
+
+
+.del-icon, .add-icon {
+    margin-top: 4px!important;
+}
+.add-icon {
+    background: #7bdd00 url(../assets/frontend/layout/img/icons/add-goods.png) no-repeat 50% 50%;
+}
+.del-icon {
+    background: #d7dde3 url(../assets/frontend/layout/img/icons/del-goods.png) no-repeat 50% 50%;
+}
+.del-icon, .add-icon {
+    width: 25px;
+    height: 25px;
+    color: #fff !important;
+    border-radius: 22px !important;
+    float: left;
+    margin: 10px 0 0 5px;
+    line-height: 1;
+    font-size: 12px;
+}

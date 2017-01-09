@@ -1,0 +1,10 @@
+ <div *ngFor="let item of items" class="row">  
+     <div class="col-md-10 col-sm-10 no-padding">
+        <template ngFor let-item [ngForOf]="[item]" [ngForTemplate]="itemTemplate">
+        </template>
+     </div>
+     <div class="col-md-2 col-sm-2"> 
+         <a class="add-icon" (click)="addElement()" >&nbsp;</a>
+         <a class="del-icon" >&nbsp;</a>
+     </div>
+ </div>

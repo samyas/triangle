@@ -1,8 +1,9 @@
+
 import { Component, OnInit } from '@angular/core';
 import { CustomValidators } from '../../shared/index';
 import { ProjectsService } from '../projects.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Project } from '../model/projects.model';
+import { Project, Organisation, Team, Budget } from '../model/projects.model';
 import { FileSelectDirective, FileDropDirective, FileUploader } from 'ng2-file-upload/ng2-file-upload';
 
 /**
@@ -44,6 +45,13 @@ export class ProjectCreateComponent implements OnInit {
   ];
 
   public file_srcs: string[] = [];
+
+    public organisations: Array<Organisation> = [new Organisation(),
+    new Organisation(), new Organisation()];
+
+      public teams: Array<Team> = [new Team()];
+
+  public budgets: Array<Budget> = [new Budget()];
 
   public uploader:FileUploader = new FileUploader({url: this.URL});
   public hasBaseDropZoneOver:boolean = false;
@@ -102,6 +110,13 @@ export class ProjectCreateComponent implements OnInit {
   private set disabledV(value:string) {
     this._disabledV = value;
     this.disabled = this._disabledV === '1';
+  }
+
+  public showElements(): void{
+    this.organisations.forEach(element => {
+      console.log(element.id);
+    });
+    console.log(this.organisations);
   }
 
   public selected(value:any):void {
